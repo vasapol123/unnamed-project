@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  dev:
+    container_name: nest_api_development
+    image: nest_api_development:latest
+    build:
+      context: ./
+      target: development
+      dockerfile: ./Dockerfile
+    command: npm run start:dev
+    ports:
+      - 3000:3000
+    networks:
+      - nest-network
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+
+networks:
+  nest-network:
