@@ -2,6 +2,8 @@ version: '3.8'
 
 services:
   dev:
+    depends_on:
+      - dev-db
     container_name: nest_api_development
     image: nest_api_development:latest
     build:
@@ -9,6 +11,7 @@ services:
       target: development
       dockerfile: ./Dockerfile
     command: npm run start:dev
+    entrypoint: ./scripts/web-docker-entrypoint.sh
     ports:
       - 3000:3000
     networks:
@@ -18,6 +21,7 @@ services:
       - /usr/src/app/node_modules
 
   dev-db:
+    container_name: dev-postgres
     image: postgres:latest
     ports:
       - 5434:5432
