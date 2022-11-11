@@ -17,5 +17,16 @@ services:
       - ./:/usr/src/app
       - /usr/src/app/node_modules
 
+  dev-db:
+    image: postgres:latest
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: db
+    networks:
+      - nest-network
+
 networks:
   nest-network:
