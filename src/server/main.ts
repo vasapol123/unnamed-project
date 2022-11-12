@@ -1,15 +1,15 @@
 import { NestFactory } from '@nestjs/core';
 import {
-  FastifyAdapter,
-  NestFastifyApplication,
-} from '@nestjs/platform-fastify';
+  ExpressAdapter,
+  NestExpressApplication,
+} from '@nestjs/platform-express';
 
 import { ServerModule } from 'src/server/server.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(
+  const app = await NestFactory.create<NestExpressApplication>(
     ServerModule,
-    new FastifyAdapter()
+    new ExpressAdapter()
   );
   await app.listen(3000);
 }
