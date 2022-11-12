@@ -7,4 +7,8 @@ export class CreateUserInput {
   @IsNotEmpty()
   @IsEmail()
   email: string;
+
+  @Field()
+  @IsNotEmpty()
+  password: string;
 }
